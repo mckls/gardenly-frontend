@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="stylesheet" href="css/output.css" />
+  <link rel="stylesheet" href="css/fonts.css" />
+
+
+  <link rel="stylesheet" href="css/fontawesome.min.css" />
+  <link rel="stylesheet" href="css/brands.min.css" />
+  <link rel="stylesheet" href="css/regular.min.css" />
+  <link rel="stylesheet" href="css/solid.min.css" />
+  <link rel="stylesheet" href="css/weather-icons.css" />
+
+  <!-- REMOVE AFTER DEPLOYING! -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <title>Gardenly Test</title>
+</head>
+
+<body class="antialiased h-screen body-bg font-Metropolis mb-12">
+
+  <!-- fixed nav -->
+  <nav class="bottom-nav fixed bottom-0 inset-x-0 bg-white border-gray-300 flex justify-between text-sm">
+
+    <a href="#" class="menu-item w-full basis-1/5 pt-3 pb-2 px-3 text-center text-xs font-medium text-gray-500 hover:bg-blue-200 hover:text-blue-800 transition duration-300">
+      <i class="block fa fa-inbox text-2xl mr-1 text-gray-400 mb-1"></i>
+      Meldungen
+    </a>
+  
+    <a href="#" class="menu-item w-full basis-1/5 pt-3 pb-2 px-3 text-center text-xs font-medium text-gray-500 hover:bg-blue-200 hover:text-blue-800">
+      <i class="block fa fa-book text-2xl mr-1 text-gray-400 mb-1"></i>
+      Wiki
+    </a>
+  
+    <a href="#" style="position: relative" class="menu-item menu-item-main w-full basis-1/5 pt-0 px-3 text-center font-medium text-xs text-gray-900 hover:bg-blue-200 hover:text-blue-800">
+      <div class="rounded-full -mt-6 text-center mb-3">
+        <img class="w-9 mb-2 text-center mx-auto py-4" src="img/logo.svg">
+      </div>
+      My Garten
+    </a>
+
+    <a href="#" class="menu-item w-full basis-1/5 pt-3 pb-2 px-3 text-center font-medium text-xs text-gray-500 hover:bg-blue-200 hover:text-blue-800">
+      <i class="block fa-solid fa-sliders text-2xl mr-1 text-gray-400 mb-1"></i>
+      Automation
+    </a>
+  
+    <a href="#" class="menu-item w-full basis-1/5 pt-3 pb-2 px-3 text-center text-xs font-medium text-gray-500 hover:bg-blue-200 hover:text-blue-800">
+      <i class="block fa-solid fa-gear text-2xl mr-1 text-gray-400 mb-1"></i>
+      Optionen
+    </a>
+  
+  </nav>
+
+
+  <!-- header -->
+  <section>
+    <div class="container px-4 mx-auto">
+      <nav class="flex items-center py-6">
+        <span class="h-10 text-3xl pt-2 text-main-green font-Metropolis font-bold">Mein Garten</span>
+
+        <div class="ml-auto">
+          <a href="#add">
+            <i class="far fa-plus text-5xl px-2 pt-0 text-main-green"></i>
+          </a>
+        </div>
+      </nav>
+    </div>
+  </section>
+
+  <!-- status message -->
+  <section>
+    <div class="container px-4 mx-auto">
+      <!-- success-->
+      <div class="status rounded-2xl p-4 bg-gradient-to-br from-main-green to-lime-400">
+        <i class="fa fa-check-circle text-3xl px-2 pt-0 text-white"></i>
+        <span class="h-6 text-lg align-text-bottom font-bold text-white">Alles im grünen Bereich.</span>
+      </div>
+
+      <!-- warning
+      <div class="rounded-2xl p-4 bg-gradient-to-br from-main-orange-500 to-main-orange-300">
+        <i class="fa fa-triangle-exclamation text-3xl px-2 pt-0 text-white"></i>
+        <span class="h-6 text-lg align-text-bottom font-bold text-white">{{ plant_name }} hat zu wenig Wasser.</span>
+      </div>
+      -->
+
+      <!-- critical 
+      <div class="rounded-2xl p-4 bg-gradient-to-br from-main-red-500 to-main-red-300">
+        <i class="fa fa-triangle-exclamation text-3xl px-2 pt-0 text-white"></i>
+        <span class="h-6 text-lg align-text-bottom font-bold text-white">{{ plant_name }} ist nicht erreichbar.</span>
+      </div>
+      -->
+
+    </div>
+  </section>
+
+  <!-- current weather -->
+  <section>
+    <div class="container px-4 mx-auto">
+      <div class="flex items-center py-6">
+        <div class="font-semibold align-middle"><i class="wi wi-day-sunny text-lg mr-1 text-main-green"></i> sonniges Wetter</div>
+        <div class="flex ml-auto">
+          <div class="font-semibold mr-6 align-middle"><i class="wi wi-thermometer text-lg mr-1 text-main-green"></i> 21 °C</div>
+          <div class="font-semibold align-middle"><i class="wi wi-strong-wind text-lg mr-1 text-main-green"></i> 14 km/h</div>
+        </div>
+      </div>
+    </div>
+
+  </section>
+
+  <!-- placeholder -->
+  <section>
+    <div class="h-4"></div>
+  </section>
+
+  <!-- plant tiles -->
+  <section>
+    <div class="container px-4 mx-auto">
+      <div class="flex grid flex-row flex-wrap gap-3 grid-cols-2 items-center py-6">
+        <!-- card 1-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+          <div class="flex">
+            <div>
+              <img src="//dummyimage.com/60x60">
+            </div>
+            <div class="ml-auto">
+              <div class="text-right font-semibold font-md"><i class="far fa-face-smile text-lg mr-1 text-main-green"></i> 95 %</div>
+              <div class="text-right font-semibold font-md"><i class="wi wi-raindrops text-8 mr-1 text-blue-500"></i> 81 %</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm mt-3 font-semibold">{{plant_name}}</p>
+            <p class="text-xs font-semibold text-gray-500">{{plant_type}}</p>
+          </div>
+        </div>
+
+        <!-- card 2-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+          <div class="flex">
+            <div>
+              <img src="//dummyimage.com/60x60">
+            </div>
+            <div class="ml-auto">
+              <div class="text-right font-semibold font-md"><i class="far fa-face-smile text-lg mr-1 text-main-green"></i> 95 %</div>
+              <div class="text-right font-semibold font-md"><i class="wi wi-raindrops text-lg mr-1 text-blue-500"></i> 81 %</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm mt-3 font-semibold">{{plant_name}}</p>
+            <p class="text-xs font-semibold text-gray-500">{{plant_type}}</p>
+          </div>
+        </div>
+
+        <!-- card 3-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+          <div class="flex">
+            <div>
+              <img src="//dummyimage.com/60x60">
+            </div>
+            <div class="ml-auto">
+              <div class="text-right font-semibold font-md"><i class="far fa-face-smile text-lg mr-1 text-main-green"></i> 95 %</div>
+              <div class="text-right font-semibold font-md"><i class="wi wi-raindrops text-lg mr-1 text-blue-500"></i> 81 %</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm mt-3 font-semibold">{{plant_name}}</p>
+            <p class="text-xs font-semibold text-gray-500">{{plant_type}}</p>
+          </div>
+        </div>
+
+        <!-- card 4-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+          <div class="flex">
+            <div>
+              <img src="//dummyimage.com/60x60">
+            </div>
+            <div class="ml-auto">
+              <div class="text-right font-semibold font-md"><i class="far fa-face-smile text-lg mr-1 text-main-green"></i> 95 %</div>
+              <div class="text-right font-semibold font-md"><i class="wi wi-raindrops text-lg mr-1 text-blue-500"></i> 81 %</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm mt-3 font-semibold">{{plant_name}}</p>
+            <p class="text-xs font-semibold text-gray-500">{{plant_type}}</p>
+          </div>
+        </div>
+
+        <!-- card 5-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+          <div class="flex">
+            <div>
+              <img src="//dummyimage.com/60x60">
+            </div>
+            <div class="ml-auto">
+              <div class="text-right font-semibold font-md"><i class="far fa-face-smile text-lg mr-1 text-main-green"></i> 95 %</div>
+              <div class="text-right font-semibold font-md"><i class="wi wi-raindrops text-lg mr-1 text-blue-500"></i> 81 %</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm mt-3 font-semibold">{{plant_name}}</p>
+            <p class="text-xs font-semibold text-gray-500">{{plant_type}}</p>
+          </div>
+        </div>
+
+        <!-- card 6-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+          <div class="flex">
+            <div>
+              <img src="//dummyimage.com/60x60">
+            </div>
+            <div class="ml-auto">
+              <div class="text-right font-semibold font-md"><i class="far fa-face-smile text-lg mr-1 text-main-green"></i> 95 %</div>
+              <div class="text-right font-semibold font-md"><i class="wi wi-raindrops text-lg mr-1 text-blue-500"></i> 81 %</div>
+            </div>
+          </div>
+          <div>
+            <p class="text-sm mt-3 font-semibold">{{plant_name}}</p>
+            <p class="text-xs font-semibold text-gray-500">{{plant_type}}</p>
+          </div>
+        </div>
+
+        <!-- card 7: add new plant-->
+        <div class="card flex-auto p-4 rounded-2xl bg-white">
+            <div>
+              <i class="fas fa-plus-circle text-2xl text-main-green"></i>
+            </div>
+            <div class="text-md mt-3 font-semibold">Pflanze<br> hinzufügen</div>
+        </div>
+
+      </div>
+    </div>
+  </section> 
+
+ 
+
+
+  <!-- footer embeds -->
+ 
+  <script type="text/javascript" src="js/include.js"></script>
+  <script type="text/javascript" src="js/conflict-detection.min.js"></script>
+  <script type="text/javascript" src="js/brands.min.js"></script>
+  <script type="text/javascript" src="js/regular.min.js"></script>
+  <script type="text/javascript" src="js/solid.min.js"></script>
+  <script>
+    includeHTML();
+  </script>
+</body>
+</html>
