@@ -1,49 +1,76 @@
-
 // get all add buttons (top right corner and tile)
 var addPlantsButtons = document.getElementsByClassName("add-plant");
-var overlayCloseButtons = document.getElementsByClassName("close-button");
+var closeButton = document.getElementById("close-button");
+var shield = document.getElementById("shield");
+var overlay = document.getElementById("overlay");
 
-// show function to show shield
+// show shield
 function showShield() {
-    var shields = document.getElementsByClassName('shield');
+    shield.classList.remove('hidden');
+    shield.classList.add('block','animate__fadeIn');
+    console.log("Shield angezeigt, und Animation go");
 
-    for(var i = 0; i < shields.length; i++) {
-        shields[i].classList.remove('hidden');
-        shields[i].classList.add('block','animate__animated','animate__fadeIn');
-        console.log(shields[i]);
-    }
-
+    var handler = function() {
+        shield.removeEventListener("animationend", handler, false);
+        shield.classList.remove('animate__fadeIn');
+        console.log("Shield Animation fertig und class removed");
+    };
+    shield.addEventListener("animationend", handler, false);
 }
 
+// hide shield
 function hideShield() {
-    
+
+    shield.classList.add('animate__fadeOut');
+
+    let handler = function() {
+        shield.removeEventListener("animationend", handler, false);
+        shield.classList.remove('animate__fadeOut','block');
+        shield.classList.add('hidden');
+        console.log("Shield Outro Animation Class removed");
+    };
+    shield.addEventListener("animationend", handler, false);
+    console.log("close button clicked");
 }
 
+// show overlay
 function showOverlay() {
     showShield();
-    document.getElementById("overlay").classList.remove('hidden');
-    document.getElementById("overlay").classList.add('block','animate__animated','animate__fadeInUpBig');
+    overlay.classList.remove('hidden');
+    overlay.classList.add('block','animate__fadeInUpBig');
+    console.log("Overlay angezeigt, und Animation go");
+
+    let handler = function() {
+        overlay.removeEventListener("animationend", handler, false);
+        overlay.classList.remove('animate__fadeInUpBig');
+        console.log('❌ Overlay Entry Animation Class removed');
+    };
+    overlay.addEventListener("animationend", handler, false);
+
 }
 
+// hide overlay
 function hideOverlay() {
-    var overlays = document.getElementsByClassName('overlay');
-    console.log(overlays)
-    for(var i = 0; i < shields.length; i++) {
-        overlays[i].classList.remove('animate__fadeIn');
-        overlays[i].classList.add('animate__fadeOut');
-        overlays[i].classList.remove('block','animate__animated','animate__fadeOut');
-        overlays[i].classList.add('hidden');
-    }
+    hideShield();
+    overlay.classList.remove('animate__fadeInUpBig');
+    overlay.classList.add('animate__fadeOutDownBig');   
+    
+    let handler = function() {
+        overlay.removeEventListener("animationend", handler, false);
+        overlay.classList.remove('block','animate__fadeOutDownBig');
+        overlay.classList.add('hidden');
+        console.log('ist fertig');
+    };
+    overlay.addEventListener("animationend", handler, false);
+
 }
-
-
 
 for (var i = 0; i < addPlantsButtons.length; i++) {
     addPlantsButtons[i].addEventListener('click', showOverlay, false);
 }
 
-for (var i = 0; i < overlayCloseButtons.length; i++) {
-    overlayCloseButtons[i].addEventListener('click', hideOverlay, false);
-}
+closeButton.addEventListener('click', hideOverlay);
+
+
 
 
