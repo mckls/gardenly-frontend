@@ -4,6 +4,7 @@ var closeButton = document.getElementById("close-button");
 var shield = document.getElementById("shield");
 var overlay = document.getElementById("overlay");
 var loginButton = document.getElementById("login");
+var registerWithMail = document.getElementById("register-with-mail");
 
 // show shield
 function showShield() {
@@ -72,6 +73,12 @@ for (var i = 0; i < addPlantsButtons.length; i++) {
 
 closeButton.addEventListener('click', hideOverlay);
 shield.addEventListener('click', hideOverlay);
-login.addEventListener('click', showOverlay);
+try{
+    loginButton.addEventListener('click', showOverlay);
+} catch (e) {}
+
+try{
+    registerWithMail.addEventListener('click', showOverlay);
+} catch (e) {}
 
 
