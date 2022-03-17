@@ -32,4 +32,8 @@
         border-top: 1px solid;
     }
 
+    .overlay{
+        box-shadow: 0 -6px 13px -9px rgba(10,26,5,0.45);
+    }
+
 };
