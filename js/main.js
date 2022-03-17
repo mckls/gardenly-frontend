@@ -3,6 +3,7 @@ var addPlantsButtons = document.getElementsByClassName("add-plant");
 var closeButton = document.getElementById("close-button");
 var shield = document.getElementById("shield");
 var overlay = document.getElementById("overlay");
+var loginButton = document.getElementById("login");
 
 // show shield
 function showShield() {
@@ -41,7 +42,7 @@ function showOverlay() {
     console.log("Overlay angezeigt, und Animation go");
 
     let handler = function() {
-        overlay.removeEventListener("animationend", handler, false);
+        overlay.removeEventListener('animationend', handler, false);
         overlay.classList.remove('animate__fadeInUpBig');
         console.log('❌ Overlay Entry Animation Class removed');
     };
@@ -71,6 +72,6 @@ for (var i = 0; i < addPlantsButtons.length; i++) {
 
 closeButton.addEventListener('click', hideOverlay);
 shield.addEventListener('click', hideOverlay);
-
+login.addEventListener('click', showOverlay);
 
 
