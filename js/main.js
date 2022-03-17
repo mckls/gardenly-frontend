@@ -70,7 +70,7 @@ for (var i = 0; i < addPlantsButtons.length; i++) {
 }
 
 closeButton.addEventListener('click', hideOverlay);
-
+shield.addEventListener('click', hideOverlay);
 
 
 
