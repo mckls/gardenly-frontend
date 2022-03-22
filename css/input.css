@@ -39,4 +39,8 @@
     .shield{
     }
 
+    a{
+        @apply font-semibold text-green-500;
+    }
+
 };

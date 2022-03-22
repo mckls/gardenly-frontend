@@ -104,7 +104,7 @@
   <!-- ⛄️ register overlay -->
 
   <!-- title area -->
-  <section id="overlay" class="overlay block bg-white rounded-t-2xl z-30 w-full fixed bottom-0 inset-x-0 animate__animated">
+  <section id="overlay" class="overlay hidden bg-white rounded-t-2xl z-30 w-full fixed bottom-0 inset-x-0 animate__animated">
     <div class="container px-4 mx-auto">
 
         <!-- title + text area -->
@@ -147,18 +147,36 @@
             
 
 
-            <div class="w-full" x-data="checkStrength()" x-init="generatePassword()">
+            <div class="w-full" x-data="checkStrength()" x-init="checkStrength()">
                 <div class="relative mb-2">
                     <input :type="showPasswordField?'password':'text'" id="password" x-model="password" class="shadow appearance-none border transition-all focus:border-main-green-500 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" placeholder="Password" @input="checkStrength()">
                     <button class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-gray-400 focus:outline-none hover:text-indigo-500 transition-colors" @click.prevent="showPasswordField=!showPasswordField"><i class="far " :class="`fa-${showPasswordField?'eye':'eye-slash'}`"></i></button>
                 </div>
                 <div class="flex -mx-1">
                     <template x-for="(v,i) in 5">
-                        <div class="w-1/5 px-1">
+                        <div class="w-1/5 px-1 mt-1">
                             <div class="h-2 rounded-xl transition-colors" :class="i<passwordScore?(passwordScore<=2?'bg-red-500':(passwordScore<=4?'bg-yellow-500':'bg-main-green-500')):'bg-gray-300'"></div>
                         </div>
                     </template>
                 </div>
+            </div>
+            <div class="text-sm mt-4 font-medium">
+              <div><i id="password-length-checker" class="fa fa-circle-xmark text-red-500 pr-1"></i> mindestens 10 Zeichen.</div>
+              <div><i id="lowerUppercase-checker" class="fa fa-circle-xmark text-red-500 pr-1"></i> mindestens ein Groß- und ein Kleinbuchstabe.</div>
+              <div><i id="number-checker" class="fa fa-circle-xmark text-red-500 pr-1"></i> mindestens eine Ziffer.</div>
+              <div><i id="special-char-checker" class="fa fa-circle-xmark text-red-500 pr-1"></i> mindestens ein Sonderzeichen.</div>
+            </div>
+            
+
+            <div class="my-8">
+              <label class="block text-gray-900 text-sm font-bold mb-2" for="lastname">
+                Datenschutz
+              </label>
+              <div class="form-check">
+                <label class="inline-flex items-center mt-3">
+                  <input type="checkbox" class="form-checkbox h-5 w-5 rounded-md text-main-green-500" checked><span class="ml-2 font-medium ">Ich akzeptiere die <a href="/datenschutz.html" target="_blank">Datenschutzbestimmungen</a> und die <a href="/agb.html" target="_blank">AGB</a>.</span>
+                </label>
+              </div>
             </div>
 
             <div class="items-center justify-between my-6">
@@ -167,9 +185,7 @@
                   Registrieren
                 </div>
               </a>
-              <a class="inline-block mt-6 align-baseline font-bold text-sm text-center w-full text-main-green-500 hover:text-main-green-600" href="#">
-                Passwort vergessen?
-              </a>
+              
             </div>
 
           </form>
