@@ -82,3 +82,25 @@ try{
 } catch (e) {}
 
 
+function checkStrength(){
+    return {
+        showPasswordField: true,
+        passwordScore: 0,
+        password: '',
+        chars: {
+            lower: 'abcdefghijklmnopqrstuvwxyzäöü',
+            upper: 'ABCDEFGHIJKLMNOPQRSTUVWXYZÄÖÜ',
+            numeric: '0123456789',
+            symbols: '!"#$%&\'()*+,-./:;<=>?@[\\]^_`{|}~'
+        },
+        charsLength: 10,
+        checkStrength: function() {
+            if(!this.password) return this.passwordScore = 0;
+            this.passwordScore = zxcvbn(this.password).score + 1;
+        },
+        generatePassword: function() {              
+            this.checkStrength();
+        },
+        
+    }
+}

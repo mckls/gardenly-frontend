@@ -14,7 +14,10 @@
   <link rel="stylesheet" href="css/regular.min.css" />
   <link rel="stylesheet" href="css/solid.min.css" />
   <link rel="stylesheet" href="css/weather-icons.css" />
-  
+
+  <script src="https://cdn.jsdelivr.net/gh/alpinejs/alpine@v2.x.x/dist/alpine.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/zxcvbn/4.4.2/zxcvbn.js"></script>
+
   <!-- ❌ FOR DEBUGGING - REMOVE AFTER DEPLOYING! -->
   <script src="https://cdn.tailwindcss.com"></script>
   
@@ -141,17 +144,27 @@
               </label>
               <input class="shadow appearance-none border transition-all focus:border-main-green-500 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" id="lastname" type="text" placeholder="max.musterfrau@example.com">
             </div>
-            <div class="mb-6">
-              <label class="block text-gray-900 text-sm font-bold mb-2 " for="password">
-                Passwort
-              </label>
-              <input class="shadow appearance-none rounded transition-all w-full py-2 px-3 border focus:border-main-green-500 text-gray-900 mb-3 leading-tight focus:outline-none focus:shadow-outline" id="password" type="password" placeholder="******************">
-              <!--<p class="text-red-500 text-xs italic text-semibold">Please choose a password.</p>-->
+            
+
+
+            <div class="w-full" x-data="checkStrength()" x-init="generatePassword()">
+                <div class="relative mb-2">
+                    <input :type="showPasswordField?'password':'text'" id="password" x-model="password" class="shadow appearance-none border transition-all focus:border-main-green-500 rounded w-full py-2 px-3 text-gray-900 leading-tight focus:outline-none focus:shadow-outline" placeholder="Password" @input="checkStrength()">
+                    <button class="block w-7 h-7 text-center text-xl leading-0 absolute top-2 right-2 text-gray-400 focus:outline-none hover:text-indigo-500 transition-colors" @click.prevent="showPasswordField=!showPasswordField"><i class="far " :class="`fa-${showPasswordField?'eye':'eye-slash'}`"></i></button>
+                </div>
+                <div class="flex -mx-1">
+                    <template x-for="(v,i) in 5">
+                        <div class="w-1/5 px-1">
+                            <div class="h-2 rounded-xl transition-colors" :class="i<passwordScore?(passwordScore<=2?'bg-red-500':(passwordScore<=4?'bg-yellow-500':'bg-main-green-500')):'bg-gray-300'"></div>
+                        </div>
+                    </template>
+                </div>
             </div>
+
             <div class="items-center justify-between my-6">
               <a href="register.html" id="register" class="register">
                 <div class="text-center bg-main-green-500 hover:bg-main-green-600 active:transform active:scale-90 transition-all text-white font-semibold w-full py-4 px-4 rounded-xl mb-3">
-                  Anmelden
+                  Registrieren
                 </div>
               </a>
               <a class="inline-block mt-6 align-baseline font-bold text-sm text-center w-full text-main-green-500 hover:text-main-green-600" href="#">
@@ -175,6 +188,7 @@
   <script type="text/javascript" src="js/brands.min.js"></script>
   <script type="text/javascript" src="js/regular.min.js"></script>
   <script type="text/javascript" src="js/solid.min.js"></script>
+
   <script>
     includeHTML();
   </script>
